@@ -1,26 +1,26 @@
 {
-    "name": "template",
+    "name": "inbox-handler",
     "version": "1.0.0",
     "type": "module",
-    "description": "A basic service template for Node.js",
-    "main": "template.js",
+    "description": "Inbox Handler module for Discommand",
+    "main": "inbox-handler.js",
     "scripts": {
-        "start": "node template.js",
+        "start": "node inbox-handler.js",
         "test": "npx --node-options=\"--experimental-vm-modules --no-warnings\" jest --detectOpenHandles --silent"
     },
     "keywords": [
-        "template",
+        "inbox-handler",
         "server",
         "node",
         "javascript"
     ],
-    "author": "Russell Purinton <russell.purinton@gmail.com>",
+    "author": "Russell Purinton <russell@discommand.com>",
     "repository": {
         "type": "git",
-        "url": "https://github.com/rpurinton/template.git"
+        "url": "https://github.com/discommand-com/inbox-handler.git"
     },
     "bugs": {
-        "url": "https://github.com/rpurinton/template/issues"
+        "url": "https://github.com/discommand-com/inbox-handler/issues"
     },
     "license": "MIT",
     "dependencies": {

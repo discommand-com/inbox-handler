@@ -1,2 +1,2 @@
-# template
-A basic service template for Node.js.
+# inbox-handler
+A basic service inbox-handler for Node.js.
