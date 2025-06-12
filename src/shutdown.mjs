@@ -22,26 +22,7 @@ export const setupShutdownHandlers = ({
         }
         shuttingDown = true;
         logger.info(`Received ${signal}. Shutting down gracefully...`);
-        if (global.httpInstance && typeof global.httpInstance.close === 'function') {
-            try {
-                await new Promise((resolve, reject) => {
-                    global.httpInstance.close((err) => {
-                        if (err) reject(err); else resolve();
-                    });
-                });
-                logger.info('HTTP server stopped.');
-            } catch (err) {
-                logger.error('Error stopping HTTP server:', err);
-            }
-        }
-        if (global.mcpServer && typeof global.mcpServer.close === 'function') {
-            try {
-                await global.mcpServer.close();
-                logger.info('MCP server stopped.');
-            } catch (err) {
-                logger.error('Error stopping MCP server:', err);
-            }
-        }
+        // Here you can add any cleanup logic, like closing database connections, etc.
         processObj.exit(0);
     };
     signals.forEach(signal => {
