@@ -9,7 +9,7 @@ import { consume, publish } from './src/rabbitmq.mjs';
   try {
     registerExceptionHandlers();
 
-    await consume('inbox', async (msg) => {
+    await consume('inbox', 'direct', async (msg) => {
       log.debug('Received message from inbox queue', { message: JSON.stringify(msg) });
       // Extract fields
       const rsvp = msg.rsvp;
@@ -19,7 +19,7 @@ import { consume, publish } from './src/rabbitmq.mjs';
       const originalContent = msg.message && msg.message.content ? msg.message.content : '';
       const content = `${author} said: ${originalContent}`;
       // Publish to rsvp queue
-      await publish(rsvp, {
+      await publish(rsvp, 'direct', {
         method: 'sendMessage',
         guildId,
         channelId,
