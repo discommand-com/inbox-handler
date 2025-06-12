@@ -19,7 +19,7 @@ import { consume, publish } from './src/rabbitmq.mjs';
       const originalContent = msg.message && msg.message.content ? msg.message.content : '';
       const content = `${author} said: ${originalContent}`;
       // Publish to rsvp queue
-      await publish('rsvp', {
+      await publish(rsvp, {
         method: 'sendMessage',
         guildId,
         channelId,
