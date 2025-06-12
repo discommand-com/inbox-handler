@@ -10,7 +10,7 @@ import { consume } from './src/rabbitmq.mjs';
     registerExceptionHandlers();
 
     await consume('inbox', (msg) => {
-      log.info('Received message from inbox queue', { message: msg });
+      log.info('Received message from inbox queue', { message: JSON.stringify(msg) });
     }, { durable: true, exclusive: false });
 
     setupShutdownHandlers();
