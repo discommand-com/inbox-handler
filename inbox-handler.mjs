@@ -24,7 +24,7 @@ import { consume, publish } from './src/rabbitmq.mjs';
         guildId,
         channelId,
         content
-      });
+      }, { durable: false, exclusive: true, autoDelete: true });
       log.info('Published RSVP message', { guildId, channelId, content });
     }, { durable: true, exclusive: false });
 
