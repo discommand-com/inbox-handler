@@ -3,12 +3,15 @@ import 'dotenv/config';
 import log from './src/log.mjs';
 import { registerExceptionHandlers } from './src/exceptions.mjs';
 import { setupShutdownHandlers } from './src/shutdown.mjs';
+import { consume } from './src/rabbitmq.mjs';
 
 (async () => {
   try {
     registerExceptionHandlers();
 
-    // Do Stuff
+    await consume('inbox', (msg) => {
+      log.info('Received message from inbox queue', { message: msg });
+    }, { durable: true, exclusive: false });
 
     setupShutdownHandlers();
   } catch (error) {
